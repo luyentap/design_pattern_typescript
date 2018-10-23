@@ -39,3 +39,21 @@ namespace StatePattern {
     }
 }
 
+namespace StatePattern {
+	export namespace Demo {
+
+		export function show() : void {
+			var context: StatePattern.Context = new StatePattern.Context(new StatePattern.ConcreteStateA());
+			context.request();
+			context.request();
+			context.request();
+			context.request();
+			context.request();
+			context.request();
+			context.request();
+			context.request();
+
+		}
+    }
+    Demo.show();
+}

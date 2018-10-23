@@ -1,3 +1,11 @@
+//trạng thái ứng dụng(sau này có thể khôi phục)
+
+//	Mục đích: Không xâm phạm tính đóng gói, 
+//lấy được và đưa ra những trạng thái trong của một đối tượng để nó 
+//có thể được khôi phục lại trạng thái đó sau này
+
+
+//cakeTaker: state mới, Orignator; state cũ
 namespace MementoPattern {
     export class State {
         private str: string;
@@ -66,4 +74,22 @@ namespace MementoPattern {
             this.memento = memento;
         }
     }
+}
+
+
+namespace MementoPattern {
+	export namespace Demo {
+
+		export function show() : void {
+			var state: MementoPattern.State = new MementoPattern.State("... State "),
+				originator: MementoPattern.Originator = new MementoPattern.Originator(state),
+				careTaker: MementoPattern.CareTaker = new MementoPattern.CareTaker();
+
+			careTaker.Memento = originator.createMemento();
+			originator.State = new MementoPattern.State("something else...");
+
+			originator.setMemento(careTaker.Memento);
+		}
+    }
+    Demo.show();
 }

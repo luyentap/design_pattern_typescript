@@ -1,3 +1,6 @@
+// nhận tín hiệu thay đổi
+// khi subject thay đổi, các observer đăng ký sẽ notify and update
+
 namespace ObserverPattern {
     export class Subject {
         private observers: Observer[] = [];
@@ -13,11 +16,13 @@ namespace ObserverPattern {
             this.observers.splice(n, 1);
         }
 
+        // notify và change here
         public notify(): void {
             console.log("notify all the observers", this.observers);
             var i: number
               , max: number;
 
+            // observer đăng ký vs nó sẽ notify, change
             for (i = 0, max = this.observers.length; i < max; i += 1) {
                 this.observers[i].notify();
             }
@@ -68,4 +73,23 @@ namespace ObserverPattern {
             this.subject = subject;
         }
     }
+}
+
+
+namespace ObserverPattern {
+	export namespace Demo {
+
+		export function show() : void {
+			var sub: ObserverPattern.ConcreteSubject = new ObserverPattern.ConcreteSubject();
+
+			sub.register(new ObserverPattern.ConcreteObserver(sub, "Jancsi"));
+			sub.register(new ObserverPattern.ConcreteObserver(sub, "Julcsa"));
+			sub.register(new ObserverPattern.ConcreteObserver(sub, "Marcsa"));
+
+			sub.SubjectState = 123;
+			sub.notify();
+
+		}
+    }
+    Demo.show();
 }

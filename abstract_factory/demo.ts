@@ -13,6 +13,6 @@ namespace AbstractFactoryPattern {
 			var tester2: AbstractFactoryPattern.Tester = new AbstractFactoryPattern.Tester(factory2);
 		    tester2.test();
 		}
+		show();
 	}
 }
-

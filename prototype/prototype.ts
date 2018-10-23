@@ -1,3 +1,7 @@
+// thay vì new, prototype sẽ clone object
+//( tạo Object trùng lặp trong khi vẫn giữ được hiệu suất trong quá trình)
+//(Nếu việc tạo ra Object lớn và tốn nhiều tài nguyên)
+
 namespace PrototypePattern {
     export interface Prototype {
         clone(): Prototype;
@@ -52,4 +56,18 @@ namespace PrototypePattern {
             return this.prototypeMap[s].clone();
         }
     }
+}
+
+namespace PrototypePattern {
+	export namespace Demo {
+		export function show() : void {
+			var builder : PrototypePattern.Builder = new PrototypePattern.Builder();
+	    	var i = 0;
+    		for (i = 1; i <= 3; i += 1) {
+	        	console.log(builder.createOne("c" + i).toString());
+    		}
+
+		}
+    }
+    Demo.show();
 }

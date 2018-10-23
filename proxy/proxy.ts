@@ -1,3 +1,6 @@
+// Proxy Pattern tạo ra một lớp trung gian giữa client/controller và các class bên trong
+// proxy giúp che giấu action RealSubject
+
 namespace ProxyPattern {
     export interface Subject {
         doAction(): void;
@@ -32,3 +35,23 @@ namespace ProxyPattern {
         }
     }
 }
+
+
+namespace ProxyPattern {
+	export namespace Demo {
+		export function show() : void {
+		    var proxy1: ProxyPattern.Proxy = new ProxyPattern.Proxy("proxy1"),
+
+			proxy2: ProxyPattern.Proxy = new ProxyPattern.Proxy("proxy2");
+
+			proxy1.doAction();
+			proxy1.doAction();
+			proxy2.doAction();
+			proxy2.doAction();
+			proxy1.doAction();
+
+		}
+    }
+    Demo.show();
+}
+

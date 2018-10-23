@@ -1,3 +1,6 @@
+//Định nghĩa một giao diện (interface) cho việc tạo một đối tượng, nhưng để các lớp con quyết định lớp nào sẽ được tạo. 
+//"Factory method" giao việc khởi tạo một đối tượng cụ thể cho lớp con
+
 namespace FactoryMethodPattern {
 
     export interface AbstractProduct {
@@ -29,3 +32,17 @@ namespace FactoryMethodPattern {
         }
     }
 }
+
+namespace FactoryMethodPattern {
+	export namespace Demo {
+		export function show() : void {
+		    var a: FactoryMethodPattern.AbstractProduct = FactoryMethodPattern.ProductFactory.createProduct("A");
+		    var b: FactoryMethodPattern.AbstractProduct = FactoryMethodPattern.ProductFactory.createProduct("B");
+
+		    console.log(a.method());
+		    console.log(b.method());
+		};
+    }
+    Demo.show();
+}
+
