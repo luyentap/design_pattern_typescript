@@ -1,3 +1,7 @@
+//Trạng thái
+//một hành vi của lớp thay đổi dựa trên trạng thái của nó
+// lớp State thay đổi--> Context call, thay đổi
+
 namespace StatePattern {
     export interface State {
         handle(context: Context): void;

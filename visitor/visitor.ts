@@ -1,3 +1,9 @@
+//cho phép định nghĩa các thao tác(operations) trên một tập hợp các đối tượng (objects) không đồng nhất (về kiểu) mà không làm thay đổi định nghĩa về lớp(classes) của các đối tượng đó. 
+//Để đạt được điều này, trong mẩu thiết kế visitor ta định nghĩa các thao tác trên các lớp tách biệt gọi các lớp visitors, 
+//các lớp này cho phép tách rời các thao tác với các đối tượng mà nó tác động đến. 
+//Với mỗi thao tác được thêm vào,
+// một lớp visitor tương ứng được tạo ra.
+
 namespace VisitorPattern {
     export interface Visitor {
         visitConcreteElement1(concreteElement1: ConcreteElement1): void;
@@ -67,3 +73,22 @@ namespace VisitorPattern {
 
 }
 
+namespace VisitorPattern {
+	export namespace Demo {
+
+		export function show() : void {
+		    var objs: VisitorPattern.Objs = new VisitorPattern.Objs();
+
+			objs.attach(new VisitorPattern.ConcreteElement1());
+			objs.attach(new VisitorPattern.ConcreteElement2());
+
+			var v1: VisitorPattern.ConcreteVisitor1 = new VisitorPattern.ConcreteVisitor1(),
+				v2: VisitorPattern.ConcreteVisitor2 = new VisitorPattern.ConcreteVisitor2();
+
+			objs.operate(v1);
+			objs.operate(v2);
+
+		}
+    }
+    Demo.show();
+}

@@ -1,3 +1,5 @@
+//Mãu Template method định nghĩa một bộ khung của một thuật toán trong một chức năng, chuyển giao việc thực hiện nó cho các lớp con.
+// Mẫu Template Method cho phép lớp con định nghĩa lại cách thực hiện của một thuật toán, mà không phải thay đổi cấu trúc thuật toán
 namespace TemplateMethodPattern {
     export class AbstractClass {
         public method1(): void {
@@ -47,4 +49,20 @@ namespace TemplateMethodPattern {
             console.log("method3 of ConcreteClass2");
         }
     }
+}
+
+
+namespace TemplateMethodPattern {
+	export namespace Demo {
+
+		export function show() : void {
+			var c1: TemplateMethodPattern.ConcreteClass1 = new TemplateMethodPattern.ConcreteClass1(),
+				c2: TemplateMethodPattern.ConcreteClass2 = new TemplateMethodPattern.ConcreteClass2();
+
+			c1.templateMethod();
+			c2.templateMethod();
+
+		}
+    }
+    Demo.show();
 }
